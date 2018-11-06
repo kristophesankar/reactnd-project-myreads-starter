@@ -8,6 +8,7 @@ To get started:
 
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
+* go to `http://localhost:3000` to view the app
 
 ## Usage
 
