@@ -9,7 +9,7 @@ To get started:
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
-# Usage
+## Usage
 
 Books are organised into three shelves:
 - User can change the state of a book by selecting the appropriate shelf from the dowpdown.
