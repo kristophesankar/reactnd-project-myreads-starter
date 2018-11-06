@@ -12,6 +12,7 @@ class BooksApp extends React.Component {
     books: []
   };
 
+  //get all books to show on bookshelves
   componentDidMount() {
     BooksAPI.getAll().then(books => {
       this.setState(() => ({
@@ -20,6 +21,7 @@ class BooksApp extends React.Component {
     });
   }
 
+  //updates a book state with a new bookshef value
   updateBookshelf = book => {
     BooksAPI.update(book, book.shelf).then(books => {
       const newBooks = this.state.books.filter(function(b) {
@@ -34,6 +36,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
+        {/* Route to Search Page */}
         <Route
           exact
           path="/search"
@@ -44,6 +47,7 @@ class BooksApp extends React.Component {
             />
           )}
         />
+        {/* Route to Bookshelf Page */}
         <Route
           exact
           path="/"
@@ -54,18 +58,21 @@ class BooksApp extends React.Component {
               </div>
               <div className="list-books-content">
                 <div>
+                  {/* The Currently Reading Component */}
                   <Bookshelf
                     books={this.state.books}
                     bookshelfTitle="Currently Reading"
                     shelf="currentlyReading"
                     onUpdateBookshelf={this.updateBookshelf}
                   />
+                  {/* The Want To Read Component */}
                   <Bookshelf
                     books={this.state.books}
                     bookshelfTitle="Want To Read"
                     shelf="wantToRead"
                     onUpdateBookshelf={this.updateBookshelf}
                   />
+                  {/* The Read Component */}
                   <Bookshelf
                     books={this.state.books}
                     bookshelfTitle="Read"
@@ -75,6 +82,7 @@ class BooksApp extends React.Component {
                 </div>
               </div>
               <div className="open-search">
+                {/* Link to navigate user to search page */}
                 <Link to="/search">Add a book</Link>
               </div>
             </div>

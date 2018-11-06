@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
+//Book Component
 class Book extends Component {
   render() {
+    // Pass book and an update method to component via props
     const { book, onUpdate } = this.props;
 
     return (
@@ -14,15 +16,18 @@ class Book extends Component {
                 width: 128,
                 height: 193,
                 backgroundImage: `url("${
-                  book.hasOwnProperty('imageLinks') ?  book.imageLinks.thumbnail : ""
+                  // check if imagelinks exits first to prevent error
+                  book.hasOwnProperty("imageLinks")
+                    ? book.imageLinks.thumbnail
+                    : ""
                 }")`
               }}
             />
+            {/* Shelf Changer control. Get the value and book shelf. */}
             <div className="book-shelf-changer">
               <select
                 value={book.shelf}
                 onChange={e => {
-
                   book.shelf = e.target.value;
                   onUpdate(book);
                 }}
@@ -38,12 +43,13 @@ class Book extends Component {
             </div>
           </div>
           <div className="book-title">{book.title}</div>
-          {
-            book.authors.map((author) => (
-                <div className="book-authors">{author}</div>
-            ))
-          }
-
+          {/* Dusplay each author on new line. */}
+          {book.hasOwnProperty("authors") &&
+            book.authors.map(author => (
+              <div key={`${book.id}_${author}`} className="book-authors">
+                {author}
+              </div>
+            ))}
         </div>
       </li>
     );
