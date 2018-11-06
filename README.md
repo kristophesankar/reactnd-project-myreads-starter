@@ -14,4 +14,4 @@ To get started:
 Books are organised into three shelves:
 - User can change the state of a book by selecting the appropriate shelf from the dowpdown.
 - User can search for new books by licking the + link at the bottom right of the screen and then by typing into the search bar.
--- User can then add this book to a shelf.
+- User can then add this book to a shelf.
