@@ -16,7 +16,7 @@ class SearchBar extends Component {
           results: books
         }));
       }
-      if(query === ""){
+      if (query === "") {
         this.setState(currentState => ({
           results: []
         }));
@@ -26,19 +26,24 @@ class SearchBar extends Component {
     this.setState(currentState => ({
       query: query
     }));
-
   };
 
   render() {
     const { query, results } = this.state;
     const { onUpdateBookshelf } = this.props;
 
-    const visibleBooks =
-      query === "" && results.error === "empty query"
-        ? []
-        : results.filter(book => {
-            return book.title.toLowerCase().includes(query.toLowerCase());
-          });
+    let visibleBooks = [];
+    if (query === "" && results.error === "empty query") {
+      visibleBooks = [];
+    } else {
+      visibleBooks = results.filter(book => {
+      
+        return book.title.toLowerCase().includes(query.toLowerCase())
+
+      });
+
+      // if(book.hasOwnProperty('authors') ? book.authors.filter(author => author.toLowerCase().includes(query.toLowerCase())) : "")
+    }
 
     return (
       <div className="search-books">
