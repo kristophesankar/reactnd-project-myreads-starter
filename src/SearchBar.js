@@ -37,12 +37,12 @@ class SearchBar extends Component {
       visibleBooks = [];
     } else {
       visibleBooks = results.filter(book => {
-      
-        return book.title.toLowerCase().includes(query.toLowerCase())
+
+        return book.title.toLowerCase().includes(query.toLowerCase()) 
 
       });
 
-      // if(book.hasOwnProperty('authors') ? book.authors.filter(author => author.toLowerCase().includes(query.toLowerCase())) : "")
+
     }
 
     return (
