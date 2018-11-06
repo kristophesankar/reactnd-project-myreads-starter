@@ -9,12 +9,6 @@ class SearchBar extends Component {
     results: []
   };
 
-  updateSearchQuery = query => {
-    this.setState(() => ({
-      query: query.trim()
-    }));
-  };
-
   fetchOnChangeSearch = query => {
     BooksAPI.search(query).then(books => {
       if (Array.isArray(books)) {
@@ -30,7 +24,7 @@ class SearchBar extends Component {
     });
 
     this.setState(currentState => ({
-      query: query.trim()
+      query: query
     }));
 
   };
