@@ -13,14 +13,15 @@ class Book extends Component {
               style={{
                 width: 128,
                 height: 193,
-                backgroundImage: `url("${book.imageLinks.thumbnail}")`
+                backgroundImage: `url("${
+                  book.hasOwnProperty('imageLinks') ?  book.imageLinks.thumbnail : ""
+                }")`
               }}
             />
             <div className="book-shelf-changer">
               <select
                 value={book.shelf}
                 onChange={e => {
-                  console.log(e.target.value);
 
                   book.shelf = e.target.value;
                   onUpdate(book);

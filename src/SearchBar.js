@@ -33,7 +33,6 @@ class SearchBar extends Component {
       query: query.trim()
     }));
 
-    console.log(this.state.query);
   };
 
   render() {
