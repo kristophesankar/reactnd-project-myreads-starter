@@ -12,18 +12,20 @@ class SearchBar extends Component {
 
   //function that fetches results from search api and updates state
   fetchOnChangeSearch = query => {
-    BooksAPI.search(query).then(books => {
-      if (Array.isArray(books)) {
-        this.setState(currentState => ({
-          results: books
-        }));
-      }
-      if (query === "") {
-        this.setState(currentState => ({
-          results: []
-        }));
-      }
-    });
+    //call fetch only if there is text
+    if (query === "") {
+      this.setState(currentState => ({
+        results: []
+      }));
+    }else{
+      BooksAPI.search(query).then(books => {
+        if (Array.isArray(books)) {
+          this.setState(currentState => ({
+            results: books
+          }));
+        }
+      });
+    }
 
     this.setState(currentState => ({
       query: query
