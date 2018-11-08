@@ -30,26 +30,36 @@ class SearchBar extends Component {
     }));
   };
 
+  //get the book control state
+  getBookState = (book, books) => {
+    
+    let returnObject = {}
+    //if book is in array of all books then set the book in array as search result
+    if(books.some(b => book.id === b.id)){
+      returnObject = books.filter(item => book.id === item.id)[0]
+    }else{
+      //else set control to none and return the book
+      book['shelf'] = 'none';
+      returnObject = book;
+    }
+    return returnObject;
+  }
+
   render() {
     const { query, results } = this.state;
-    const { onUpdateBookshelf } = this.props;
+    const { books, onUpdateBookshelf } = this.props;
 
     //Carry out search
     const visibleBooks =
       query === "" && results.error === "empty query"
-        ? //clear scheen if there are no results
+        ? //clear screen if there are no results
           []
-        : results.filter(book => {
+        : results.map(book => {
             //return books that pass  the search requirement
+            
             return (
-              //if book title mathes query return true
-              book.title.toLowerCase().includes(query.toLowerCase()) ||
-              //if book has prop authors then join values and check if query exixts in it
-              (book.hasOwnProperty("authors") &&
-                book.authors
-                  .join(" ")
-                  .toLowerCase()
-                  .includes(query.toLowerCase()))
+              //if book  matches query return true
+              this.getBookState(book, books)
             );
           });
 
