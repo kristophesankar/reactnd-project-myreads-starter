@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Book from "./Book";
 import { Link } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
+import {DebounceInput} from 'react-debounce-input';
 
 //Search component
 class SearchBar extends Component {
@@ -73,13 +74,13 @@ class SearchBar extends Component {
             Close
           </Link>
           <div className="search-books-input-wrapper">
-            <input
-              type="text"
+            {/* onChange fetch results from search api using react-debounce-input */}
+            <DebounceInput
               placeholder="Search by title or author"
               value={query}
-              //onChange fetch results from search api
-              onChange={e => this.fetchOnChangeSearch(e.target.value)}
-            />
+              minLength={2}
+              debounceTimeout={300}
+              onChange={e => this.fetchOnChangeSearch(e.target.value)} />
           </div>
         </div>
         <div className="search-books-results">
