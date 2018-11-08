@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
 //Book Component
-class Book extends Component {
-  render() {
+const Book = props => {
     // Pass book and an update method to component via props
-    const { book, onUpdate } = this.props;
+    const { book, onUpdate } = props;
 
     return (
       <li>
@@ -53,7 +52,7 @@ class Book extends Component {
         </div>
       </li>
     );
-  }
+  
 }
 
 export default Book;

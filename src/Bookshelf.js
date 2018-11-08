@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import Book from "./Book";
 
 //Bookshelf component
-class Bookshelf extends Component {
-  render() {
+const Bookshelf = props => {
+  
     // Pass books and an update method to component via props
-    const { books, onUpdateBookshelf, shelf } = this.props;
+    const { books, onUpdateBookshelf, shelf, bookshelfTitle } = props;
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">{this.props.bookshelfTitle}</h2>
+        <h2 className="bookshelf-title">{bookshelfTitle}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
             {/* Show only books that equals the shelf passed via props */}
@@ -29,7 +29,7 @@ class Bookshelf extends Component {
         </div>
       </div>
     );
-  }
+  
 }
 
 export default Bookshelf;
