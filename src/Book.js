@@ -19,7 +19,7 @@ class Book extends Component {
                   // check if imagelinks exits first to prevent error
                   book.hasOwnProperty("imageLinks")
                     ? book.imageLinks.thumbnail
-                    : ""
+                    : "https://dummyimage.com/128x193/2e7c31/fff.png&text=Cover+Missing"
                 }")`
               }}
             />
